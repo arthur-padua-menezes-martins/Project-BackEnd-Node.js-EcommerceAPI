@@ -16,7 +16,8 @@
     "esModuleInterop": true,
   },
   "include": [
-    "src"
+    "src",
+    "lib"
   ],
   "exclude": [
     "**/*.spec.ts",
