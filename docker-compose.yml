@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:4.2
+    container_name: MONGO:back-end-ecommerce-sertao-nerd-api
+    volumes: 
+      - ./docker/volumes/mongo:/data/db
+    ports:
+      - "27017:27017"
+    restart: always
+  api: 
+    image: node:12
+    container_name: API:back-end-ecommerce-sertao-nerd-api
+    command: bash -c "npm install --only=prod && npm run debug"
+    volumes: 
+      - ./dist/:/usr/src/dist/
+      - ./package.json:/usr/src/package.json
+    working_dir: /usr/src
+    ports: 
+      - "5050:5050"
+      - "9222:9222"
+    restart: always
+    links: 
+      - mongo
