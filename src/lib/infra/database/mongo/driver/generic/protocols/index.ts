@@ -12,13 +12,13 @@ export interface StorageHelperInterface {
   disconnect: () => Promise<void>
 }
 
-/** auxiliary to access mongo database */
-export interface MongoHelperInterface {
+/** auxiliary to access persistence database */
+export interface PersistenceHelperInterface {
 
-  /** get collection of mongo database */
+  /** get collection of persistence database */
   getCollection: (name: string, options?: any) => Promise<Collection>
 
-  /** transform single id to mongo objectId */
+  /** transform single id to persistence objectId */
   transformObjectId: (id: string) => Types.ObjectId
 
   /** map _id property in to id property */

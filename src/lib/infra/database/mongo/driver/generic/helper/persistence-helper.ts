@@ -1,11 +1,11 @@
 import mongoose, { Mongoose, Types, Collection } from 'mongoose'
-import { StorageHelperInterface, MongoHelperInterface } from '../../generic/protocols'
-import env from '../../../../../../../../main/config/env'
+import { StorageHelperInterface, PersistenceHelperInterface } from '../protocols'
+import env from '@/app/main/config/env'
 
 /** auxiliary to access the database */
-export default class MongoHelper implements StorageHelperInterface, MongoHelperInterface {
+export default class PersistenceHelper implements StorageHelperInterface, PersistenceHelperInterface {
   /** class instance */
-  private static _instance: MongoHelper
+  private static _instance: PersistenceHelper
   /** conection */
   private client!: Mongoose
   /** url to connect in database */
@@ -16,14 +16,14 @@ export default class MongoHelper implements StorageHelperInterface, MongoHelperI
 
   /**
   * get instance of the class
-  * @returns {MongoHelper} instance of the class
+  * @returns {PersistenceHelper} instance of the class
   */
-  static get instance (): MongoHelper {
-    if (!MongoHelper._instance) {
-      MongoHelper._instance = new MongoHelper()
+  static get instance (): PersistenceHelper {
+    if (!PersistenceHelper._instance) {
+      PersistenceHelper._instance = new PersistenceHelper()
     }
 
-    return MongoHelper._instance
+    return PersistenceHelper._instance
   }
 
   /**
