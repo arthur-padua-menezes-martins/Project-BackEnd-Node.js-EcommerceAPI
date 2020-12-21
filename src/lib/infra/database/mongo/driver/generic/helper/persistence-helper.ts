@@ -26,25 +26,26 @@ export default class PersistenceHelper implements StorageHelperInterface, Persis
     return PersistenceHelper._instance
   }
 
-  /**
-  * verify if connection is established
-  * @returns {boolean} represents if application is connected
-  */
-  async isConnected (): Promise<boolean> {
-    return this.client !== null
-  }
-
-  /** connect to database */
-  async connect (): Promise<void> {
+  /** established connection */
+  public async connect (): Promise<void> {
     this.client = await mongoose.connect(this.url, {
       useNewUrlParser: true, useUnifiedTopology: true
     })
   }
 
-  /** disconnect to database */
-  async disconnect (): Promise<void> {
-    const closeConnection = this.client.connection.close()
-    await closeConnection
+  /**
+  * verify if connection is established
+  * @returns {boolean} represents if persistence method is connected
+  */
+  public async isConnected (): Promise<boolean> {
+    const isConnected = this.client !== null
+    return isConnected
+  }
+
+  /** disconnect */
+  public async disconnect (): Promise<void> {
+    const disconnect = this.client.connection.close()
+    await disconnect
   }
 
   /**
@@ -53,7 +54,7 @@ export default class PersistenceHelper implements StorageHelperInterface, Persis
   * @param {any} options options modifier
   * @returns {Collection} database collection
   */
-  async getCollection (name: string, options?: any): Promise<Collection> {
+  public async getCollection (name: string, options?: any): Promise<Collection> {
     const isConnected: boolean = await this.isConnected()
 
     if (!isConnected) {
@@ -69,7 +70,7 @@ export default class PersistenceHelper implements StorageHelperInterface, Persis
   * @param {string} id the single id
   * @returns {Types.ObjectId} objectId
   */
-  transformObjectId (id: string): Types.ObjectId {
+  public transformObjectId (id: string): Types.ObjectId {
     const objectId = this.client.Types.ObjectId(id)
     return objectId
   }
@@ -79,7 +80,7 @@ export default class PersistenceHelper implements StorageHelperInterface, Persis
   * @param {any} content the content but has mapped
   * @returns {any} the mapped input content
   */
-  mapId (content: any): any {
+  public mapId (content: any): any {
     const { _id, ...rest } = content
 
     const exists = (_id && rest)
