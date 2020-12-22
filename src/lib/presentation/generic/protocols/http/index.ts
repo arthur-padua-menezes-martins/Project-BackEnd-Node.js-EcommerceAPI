@@ -2,14 +2,14 @@ export {
   HttpRequestInterface
 } from './request/http-request'
 export {
-  HttpRequestInterfaceBody
+  HttpRequestBodyInterface
 } from './request/body/http-request-body'
 export {
-  HttpRequestInterfaceHeaders
+  HttpRequestHeadersInterface
 } from './request/headers/http-request-headers'
 export {
   HttpResponseInterface
 } from './response/http-response'
 export {
-  HttpResponseInterfaceBody
+  HttpResponseBodyInterface
 } from './response/body/http-response-body'
