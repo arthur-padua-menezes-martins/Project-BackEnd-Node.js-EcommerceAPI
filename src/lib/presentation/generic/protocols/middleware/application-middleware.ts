@@ -1,4 +1,4 @@
-import { HttpRequestInterfaceHeaders, HttpResponseInterface } from '../http'
+import { HttpRequestHeadersInterface, HttpResponseInterface } from '../http'
 
 /**
 * middleware interface for the application rules type
@@ -9,5 +9,5 @@ export interface MiddlewareInterface {
   * @param httpRequest standard application request
   * @returns standard application response
   */
-  handle: (httpRequest: HttpRequestInterfaceHeaders) => Promise<HttpResponseInterface>
+  handle: (httpRequest: HttpRequestHeadersInterface) => Promise<HttpResponseInterface>
 }

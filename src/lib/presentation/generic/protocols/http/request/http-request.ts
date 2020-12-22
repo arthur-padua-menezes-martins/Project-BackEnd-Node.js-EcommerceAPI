@@ -1,16 +1,16 @@
-import { HttpRequestInterfaceBody } from './body/http-request-body'
-import { HttpRequestInterfaceHeaders } from './headers/http-request-headers'
+import { HttpRequestBodyInterface } from './body/http-request-body'
+import { HttpRequestHeadersInterface } from './headers/http-request-headers'
 
 /**
-* request interface for the application request type
+* application request type
 */
 export interface HttpRequestInterface {
-  /** @param {HttpRequestInterfaceBody} body infomations of request */
-  body?: HttpRequestInterfaceBody
-  /** @param {any} params parameters */
+  /** @property {HttpRequestBodyInterface} body request body */
+  body?: HttpRequestBodyInterface
+  /** @property {any} params request url parameters */
   params?: any
-  /** @param {any} query query string */
+  /** @property {any} query request url query string */
   query?: any
-  /** @param {HttpRequestInterfaceHeaders} headers HTTP headers */
-  headers?: HttpRequestInterfaceHeaders
+  /** @property {HttpRequestHeadersInterface} headers request headers */
+  headers?: HttpRequestHeadersInterface
 }

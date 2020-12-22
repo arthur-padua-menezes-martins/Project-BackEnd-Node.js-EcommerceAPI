@@ -1,17 +1,17 @@
 import { HttpResponseBodyInterface } from './body/http-response-body'
 
 /**
-* response interface for the application response type
+* application response type
 */
 export interface HttpResponseInterface {
-  /** @param {number} statusCode status code definitions */
+  /** @property {number} statusCode response status code definition */
   statusCode: number
-  /** @param {HttpResponseBodyInterface} body infomations of response */
+  /** @property {HttpResponseBodyInterface} body response body definition */
   body: HttpResponseBodyInterface
-  /** @param {string} successMessage success message */
+  /** @property {string} successMessage success message */
   successMessage?: string
-  /** @param {Error} errorMessage error message */
+  /** @property {Error} errorMessage error message */
   errorMessage?: Error
-  /** @param {string[]} errorMessage invalid fields presents in request */
+  /** @property {string[]} errorMessage invalid fields presents in request */
   invalidFields?: string[]
 }
