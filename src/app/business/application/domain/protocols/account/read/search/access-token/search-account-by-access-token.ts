@@ -1,6 +1,6 @@
 import {
   AccountModelInterface
-} from '../../../../../generic/protocols'
+} from '../../../../../models/account/account-model'
 
 /** **specific** search account by access token */
 export interface SearchAccountByAccessTokenInterface {
